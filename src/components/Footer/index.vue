@@ -1,16 +1,20 @@
 <template>
-    <div>
+  <el-footer class="player-control">
     
-    </div>
+  </el-footer >
 </template>
     
 <script>
 export default {
-    name:'Footer',
-    
-}
+  name: "Footer",
+};
 </script>
     
 <style lang="less" scoped>
-    
+.el-footer{
+  box-sizing: border-box;
+  height: 60px;
+  background-color: #fff;
+  border-top: #f00 2px solid;
+}
 </style>
