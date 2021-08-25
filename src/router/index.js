@@ -44,6 +44,6 @@ VueRouter.prototype.replace = function(location, onResolve, onReject) {
 }
 
 export default new VueRouter({
-	mode: 'history',
+	// mode: 'history',
 	routes
 })

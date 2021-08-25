@@ -1,20 +1,19 @@
 <template>
-  <el-main class="infinite-list infinite-list-wrapper" style="overflow:auto">
-    <router-view></router-view>
+  <el-main>
+    <router-view class="main-container mx-auto"></router-view>
   </el-main>
 </template>
-    
-<script>
 
-export default {
-  name: "Main",
-  
-};
+<script>
+export default {}
 </script>
-    
-<style lang="less" scoped>
-.el-main{
-  overflow: auto;
-  height: 765px;
+
+<style scoped>
+.el-main {
+  height: calc(100vh - 60px);
+  padding: 0;
+}
+.main-container {
+  @apply mx-auto !important;
 }
 </style>
