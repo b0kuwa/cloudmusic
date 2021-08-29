@@ -1,0 +1,143 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2505416 */
+  src: url('iconfont.woff2?t=1629250119598') format('woff2'),
+       url('iconfont.woff?t=1629250119598') format('woff'),
+       url('iconfont.ttf?t=1629250119598') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-video:before {
+  content: "\e60a";
+}
+
+.icon-play2:before {
+  content: "\e6ce";
+}
+
+.icon-watch-later:before {
+  content: "\e601";
+}
+
+.icon-musiclist:before {
+  content: "\e69c";
+}
+
+.icon-play1:before {
+  content: "\e602";
+}
+
+.icon-down:before {
+  content: "\e6e9";
+}
+
+.icon-Add:before {
+  content: "\e604";
+}
+
+.icon-yinlemusic217:before {
+  content: "\e713";
+}
+
+.icon-download:before {
+  content: "\e7ea";
+}
+
+.icon-friend:before {
+  content: "\e609";
+}
+
+.icon-radio:before {
+  content: "\e6cd";
+}
+
+.icon-yinle:before {
+  content: "\e63b";
+}
+
+.icon-VideoClip:before {
+  content: "\e6fe";
+}
+
+.icon-LC_icon_user_line_1:before {
+  content: "\e61c";
+}
+
+.icon-right:before {
+  content: "\e72d";
+}
+
+.icon-tshirt:before {
+  content: "\e8fe";
+}
+
+.icon-email:before {
+  content: "\e66f";
+}
+
+.icon-search:before {
+  content: "\e67d";
+}
+
+.icon-share:before {
+  content: "\e626";
+}
+
+.icon-play:before {
+  content: "\e641";
+}
+
+.icon-loop:before {
+  content: "\e6fd";
+}
+
+.icon-random:before {
+  content: "\e6a4";
+}
+
+.icon-icon-test:before {
+  content: "\e64f";
+}
+
+.icon-list:before {
+  content: "\e676";
+}
+
+.icon-weibiaoti-7-01:before {
+  content: "\e8a8";
+}
+
+.icon-weibiaoti-8-01:before {
+  content: "\e8a9";
+}
+
+.icon-love:before {
+  content: "\e60d";
+}
+
+.icon-love-fill:before {
+  content: "\e60e";
+}
+
+.icon-play_pause:before {
+  content: "\e600";
+}
+
+.icon-sound-1:before {
+  content: "\e766";
+}
+
+.icon-arrow-double-left:before {
+  content: "\e665";
+}
+
+.icon-arrow-double-right:before {
+  content: "\e666";
+}
+

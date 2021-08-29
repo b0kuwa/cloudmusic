@@ -1,25 +1,25 @@
 <template>
-  <el-container id="app" class="bg-white relative">
-    <el-container>
+  <div id="app" class="bg-white relative">
+    <div class="flex">
       <Aside></Aside>
       <Main></Main>
-    </el-container>
+    </div>
     <Footer></Footer>
-  </el-container>
+  </div>
 </template>
 
 <script>
-import Aside from "@/components/Aside";
-import Main from "@/components/Main";
-import Footer from "@/components/Footer";
+import Aside from '@/components/Aside'
+import Main from '@/components/Main'
+import Footer from '@/components/Footer'
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Aside,
     Main,
-    Footer,
-  },
-};
+    Footer
+  }
+}
 </script>
 
 <style scoped>
@@ -33,5 +33,6 @@ export default {
   min-width: 1000px;
   min-height: 668px;
   border-radius: 5px;
+  overflow: hidden;
 }
 </style>

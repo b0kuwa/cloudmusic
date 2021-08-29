@@ -1,7 +1,7 @@
 <template>
-  <el-main>
-    <router-view class="main-container mx-auto"></router-view>
-  </el-main>
+  <main class="flex-1">
+    <router-view class="mx-auto"></router-view>
+  </main>
 </template>
 
 <script>
@@ -9,11 +9,8 @@ export default {}
 </script>
 
 <style scoped>
-.el-main {
+main {
   height: calc(100vh - 60px);
-  padding: 0;
-}
-.main-container {
-  @apply mx-auto !important;
+  overflow: auto;
 }
 </style>

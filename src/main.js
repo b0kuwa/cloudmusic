@@ -27,6 +27,12 @@ Vue.filter('numberFormatThousand', num => {
 })
 Vue.filter('MMDD', date => dayjs(date).format('MM月DD日 hh:mm'))
 Vue.filter('mmss', time => dayjs(time).format('mm:ss'))
+Vue.filter('currentTime', t => {
+    t = t | 0
+    const m = (t / 60) | 0
+    const s = t % 60
+    return `${m.toString().padStart(2, 0)}:${s.toString().padStart(2, 0)}`
+})
 
 Vue.prototype.$api = api
 
