@@ -1,5 +1,5 @@
 <template>
-  <aside class="bg-gray-100 p-0 w-52">
+  <aside class="bg-gray-50 p-0 w-52">
     <!-- 路由前进和后退 -->
     <div class="head-left flex text-red-300 justify-end bg-red-500 items-center" style="height: 50px">
       <a href="javascript:;" @click.prevent="back" class="text-red-300 p-1">
@@ -31,7 +31,7 @@
         :to="item.to"
         v-for="(item, index) in list"
         :key="index"
-        class="flex items-center gap-1 text-sm py-2 text-gray-800 px-4 cursor-default hover:bg-gray-200"
+        class="flex items-center gap-1 text-sm py-2 text-gray-800 px-4 cursor-default hover:bg-gray-100"
       >
         <span :class="item.icon"></span>
         {{ item.label }}
@@ -177,7 +177,7 @@ ul li span {
   @apply bg-red-600 text-white rounded-md font-bold py-2;
 }
 .router-link-active {
-  @apply text-red-600 bg-gray-300;
+  @apply text-red-600 bg-gray-200;
 }
 .el-popover{
     padding: 0 !important;

@@ -13,10 +13,10 @@ export const createSong = song => {
     return new Song(
         song.id,
         song.name,
-        song.ar,
-        song.al.picUrl,
+        song.ar || song.artists,
+        (song.al && song.al.picUrl) || '',
         `https://music.163.com/song/media/outer/url?id=${song.id}.mp3`,
-        song.dt
+        song.dt || song.duration
     )
 }
 

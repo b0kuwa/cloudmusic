@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full bg-gray-50">
+  <div class="audio-wrap relative w-full bg-gray-50">
     <!-- 音乐播放进度条 -->
     <slider :progress="progress"></slider>
     <!-- 内容区 -->
@@ -8,7 +8,7 @@
       <div class="music-info">
         <div class="flex items-center" v-if="currentPlay.id">
           <div class="w-12 h-12">
-            <img :src="currentPlay.image" class="w-full rounded-md" />
+            <el-image :src="currentPlay.image" class="w-full rounded-md"></el-image>
           </div>
           <div class="ml-2">
             <p>
@@ -158,6 +158,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.audio-wrap {
+  z-index: 9999;
+}
 .music-info {
   width: 400px;
   height: 60px;

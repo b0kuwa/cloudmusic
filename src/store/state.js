@@ -8,5 +8,7 @@ export default {
     // 用户信息
     userInfo: {},
     // 登录状态
-    loginStatus: false
+    loginStatus: false,
+    // 搜索历史
+    searchHistory: []
 }

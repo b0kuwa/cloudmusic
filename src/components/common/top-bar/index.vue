@@ -34,8 +34,8 @@ export default {
 </script>
 
 <style scoped>
-.top-bar-wrap{
-    z-index: 9999;
+.top-bar-wrap {
+  z-index: 9999;
 }
 .router-link-active {
   @apply text-white font-extrabold;
