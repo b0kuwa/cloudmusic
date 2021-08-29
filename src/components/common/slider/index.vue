@@ -1,16 +1,13 @@
 <template>
   <div class="slider-wrap">
-    <div class="slider-progress"></div>
+    <div class="slider-progress" :style="{ width: progress }"></div>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    percent: {
-      type: Number,
-      default: 0
-    }
+    progress: {}
   }
 }
 </script>
@@ -18,9 +15,17 @@ export default {
 <style lang="scss" scoped>
 .slider-wrap {
   height: 2px;
-  @apply relative w-full bg-gray-500;
-  .slider-progress:after {
-    @apply bg-red-600 w-3 h-3 rounded-full absolute top-1/2 transform -translate-y-1/2 z-10;
+  @apply relative w-full;
+  &:hover .slider-progress::after {
+    @apply opacity-100;
+  }
+  .slider-progress {
+    height: 2px;
+    @apply bg-red-600 relative;
+    &::after {
+      content: '';
+      @apply bg-red-600 w-3 h-3 rounded-full absolute right-0 top-1/2 transform -translate-y-1/2 z-10 opacity-0;
+    }
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="relative w-full bg-gray-50">
     <!-- 音乐播放进度条 -->
-    <slider></slider>
+    <slider :progress="progress"></slider>
     <!-- 内容区 -->
     <div class="flex justify-between items-center w-full relative p-1">
       <!-- 歌曲信息 -->
@@ -145,6 +145,7 @@ export default {
     // 更新进度条
     updateProgress(e) {
       this.currentTime = e.target.currentTime
+      this.progress = (this.currentTime / this.$refs.audioRef.duration) * 100 + '%'
     },
     playing() {
       this.$store.commit('SET_PLAYING_STATUS', true)
