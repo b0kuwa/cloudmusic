@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import SongList from '@/components/common/song-list'
+import SongList from '@/components/song-list'
 export default {
   components: {
     SongList

@@ -5,9 +5,7 @@
         <a href="#" @click.prevent class="text-white font-medium">独家放送</a>
       </template>
     </top-bar>
-    <div
-      class="content grid grid-cols-4 gap-4"
-      v-infinite-scroll="load">
+    <div class="content grid grid-cols-4 gap-4" v-infinite-scroll="load">
       <router-link
         :to="{ name: 'videoDetail', query: { mvid: item.id } }"
         v-for="item in privateContentList"
@@ -22,7 +20,7 @@
 </template>
 
 <script>
-import TopBar from '@/components/common/top-bar'
+import TopBar from '@/components/top-bar'
 import PrivateContentItem from './private-content-item'
 export default {
   components: {

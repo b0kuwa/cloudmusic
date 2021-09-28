@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Search from '@/components/common/search'
+import Search from '@/components/search'
 export default {
   components: {
     Search

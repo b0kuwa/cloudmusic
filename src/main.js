@@ -3,7 +3,6 @@ import App from '@/App.vue'
 import store from '@/store'
 import router from '@/router'
 import api from '@/api'
-import dayjs from 'dayjs'
 
 import 'tailwindcss/tailwind.css'
 import '@/assets/css/global.css'
@@ -11,28 +10,9 @@ import '@/assets/fonts/iconfont.css'
 
 import '@/plugin/element-ui'
 
-import duration from 'dayjs/plugin/duration'
-dayjs.extend(duration)
+import '@/filters'
 
 Vue.config.productionTip = false
-
-Vue.filter('numberFormat', num => (num + '').padStart(2, 0))
-Vue.filter('dateFormat', date => dayjs(date).format('YYYY-MM-DD'))
-Vue.filter('duration', dur => dayjs.duration(dur).format('mm:ss'))
-Vue.filter('numberFormatThousand', num => {
-    if (parseInt(num) < 10000) {
-        return num
-    }
-    return parseInt(num / 10000) + '万'
-})
-Vue.filter('MMDD', date => dayjs(date).format('MM月DD日 hh:mm'))
-Vue.filter('mmss', time => dayjs(time).format('mm:ss'))
-Vue.filter('currentTime', t => {
-    t = t | 0
-    const m = (t / 60) | 0
-    const s = t % 60
-    return `${m.toString().padStart(2, 0)}:${s.toString().padStart(2, 0)}`
-})
 
 Vue.prototype.$api = api
 

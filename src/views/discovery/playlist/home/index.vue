@@ -116,8 +116,8 @@
 </template>
 
 <script>
-import PlaylistItem from '@/components/common/playlist-item'
-import Loading from '@/components/common/loading'
+import PlaylistItem from '@/components/playlist-item'
+import Loading from '@/components/loading'
 
 export default {
   components: {

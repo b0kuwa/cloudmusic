@@ -3,16 +3,18 @@
     <!-- 路由链接 -->
     <top-bar :list="list"></top-bar>
     <!-- 内容展示 -->
-    <router-view class="content"></router-view>
+    <keep-alive>
+      <router-view class="content"></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script>
-import TopBar from '@/components/common/top-bar'
+import TopBar from '@/components/top-bar'
 
 export default {
   components: {
-    TopBar,
+    TopBar
   },
   data() {
     return {

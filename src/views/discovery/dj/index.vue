@@ -1,19 +1,20 @@
 <template>
   <div>
-    <el-carousel :interval="4000" type="card" indicator-position="outside" height="200px">
-      <el-carousel-item v-for="item in banners" :key="item.targetId">
-        <img :src="item.pic" class="object-cover rounded-md" />
-      </el-carousel-item>
-    </el-carousel>
+    <banner :banners="banners" attr="pic"></banner>
   </div>
 </template>
 
 <script>
+import banner from '@/components/banner'
+
 export default {
   data() {
     return {
       banners: []
     }
+  },
+  components: {
+    banner
   },
   created() {
     this.getDjBanner()

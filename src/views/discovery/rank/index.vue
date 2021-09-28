@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import RankItem from '@/components/common/rank-item'
-import PlaylistItem from '@/components/common/playlist-item'
+import RankItem from '@/components/rank-item'
+import PlaylistItem from '@/components/playlist-item'
 export default {
   components: {
     RankItem,

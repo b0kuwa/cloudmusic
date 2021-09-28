@@ -89,7 +89,7 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex'
-import Slider from '@/components/common/slider'
+import Slider from '@/components/slider'
 export default {
   components: {
     Slider

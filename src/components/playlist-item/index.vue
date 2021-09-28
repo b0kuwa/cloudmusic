@@ -8,7 +8,7 @@
       </el-image>
       <div class="flex items-center text-xs text-white absolute top-0.5 right-0.5">
         <span class="el-icon-headset mx-0.5"></span>
-        {{ num | numberFormatThousand }}
+        {{ num | numFmtThousand }}
       </div>
       <div class="play-icon opacity-0 transition-all absolute" :class="position">
         <span class="iconfont icon-play1 text-red-500" style="font-size: 40px"></span>

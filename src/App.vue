@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import Aside from '@/components/Aside'
-import Main from '@/components/Main'
-import Footer from '@/components/Footer'
+import Aside from '@/layout/Aside'
+import Main from '@/layout/Main'
+import Footer from '@/layout/Footer'
 export default {
   name: 'App',
   components: {

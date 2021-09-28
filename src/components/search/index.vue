@@ -122,7 +122,7 @@ export default {
       })
     },
     playOne(song) {
-      this.$store.dispatch('setPlayOne', createSong(song))
+      this.$store.dispatch('setPlayOne', song)
     }
   }
 }

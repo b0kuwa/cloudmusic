@@ -20,7 +20,7 @@
           <!-- 昵称 -->
           <a class="text-sm text-blue-400 mx-2 hover:text-blue-500 cursor-pointer">{{ creator.nickname }}</a>
           <!-- 创建时间 -->
-          <span class="text-gray-600 text-xs cursor-default">{{ playlist.createTime | dateFormat }} 创建</span>
+          <span class="text-gray-600 text-xs cursor-default">{{ playlist.createTime | dateFmt }} 创建</span>
         </div>
         <!-- 操作按钮 -->
         <div class="grid grid-cols-4 gap-4">
@@ -28,7 +28,7 @@
             <i class="el-icon-video-play"></i> 播放全部 <i class="el-icon-plus"></i>
           </button>
           <button class="btn-default">
-            <i class="el-icon-folder-add"></i> 收藏({{ playlist.subscribedCount | numberFormatThousand }})
+            <i class="el-icon-folder-add"></i> 收藏({{ playlist.subscribedCount | numFmtThousand }})
           </button>
           <button class="btn-default"><i class="el-icon-share"></i> 分享</button>
           <button class="btn-default"><i class="el-icon-download"></i> 下载全部</button>
@@ -53,7 +53,7 @@
             <span>{{ playlist.trackCount }}</span>
             <span class="pl-3">播放数</span>
             <span class="mr-1">:</span>
-            <span>{{ playlist.playCount | numberFormatThousand }}</span>
+            <span>{{ playlist.playCount | numFmtThousand }}</span>
           </li>
           <li>
             <span class="single-justify">简介</span><span class="mr-1">:</span
@@ -102,7 +102,7 @@
       </el-tab-pane>
     </el-tabs>
     <!-- 回到顶部 -->
-    <el-backtop target="#container" :bottom="100">
+    <!-- <el-backtop target="#container" :bottom="100">
       <div
         class="w-full bg-white border rounded-3xl text-gray-700 shadow-md text-center text-current"
         style="
@@ -119,13 +119,12 @@
       >
         UP
       </div>
-    </el-backtop>
+    </el-backtop> -->
   </div>
 </template>
 
 <script>
-import TopBar from '@/components/common/top-bar'
-import { createSong } from '@/model/song'
+import TopBar from '@/components/top-bar'
 export default {
   components: {
     TopBar
@@ -153,7 +152,21 @@ export default {
       loading: false
     }
   },
-  computed: {},
+
+  watch: {
+    $route: {
+      handler() {
+        this.getPlaylistDetail(this.id)
+      },
+      deep: true
+    }
+  },
+
+  computed: {
+    isReady() {
+      return this.songs.length > 0
+    }
+  },
 
   methods: {
     // 设置索引列
@@ -211,12 +224,11 @@ export default {
     },
     // 播放全部
     playAll() {
-      this.$store.dispatch('setPlaylist', this.songs)
+      this.isReady && this.$store.dispatch('setPlaylist', this.songs)
     },
     // 单个播放
     selectedOnePlay(row) {
-      const newSong = createSong(row)
-      this.$store.dispatch('setPlayOne', newSong)
+      this.isReady && this.$store.dispatch('setPlayOne', row)
     }
   },
 

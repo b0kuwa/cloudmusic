@@ -1,12 +1,14 @@
 <template>
   <div>
     <top-bar :list="list"></top-bar>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script>
-import TopBar from '@/components/common/top-bar'
+import TopBar from '@/components/top-bar'
 export default {
   components: {
     TopBar

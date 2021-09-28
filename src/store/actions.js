@@ -39,7 +39,7 @@ export const setPlayPause = ({ commit }) => {
 export const setPlayOne = ({ commit, state, getters }, newSong) => {
     const index = state.playlist.findIndex(item => item.id === newSong.id)
     if (index === -1) {
-        // newSong = createSong(newSong)
+        newSong = createSong(newSong)
         commit('SET_PLAY_ONE', newSong)
     } else {
         if (newSong.id !== getters.currentPlay.id) {

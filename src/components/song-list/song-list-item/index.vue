@@ -3,7 +3,7 @@
     <slot>
       <div class="px-2 py-2 flex items-center ">
         <!-- 索引 -->
-        <span class="px-2 text-xs text-gray-400">{{ (index + 1) | numberFormat }}</span>
+        <span class="px-2 text-xs text-gray-400">{{ (index + 1) | paddingZero }}</span>
         <!-- 封面 -->
         <div class="flex items-center w-1/2">
           <div class="relative" style="width: 60px; height: 60px">
@@ -19,7 +19,7 @@
         <!-- 专辑名 -->
         <div class="text-xs text-gray-400 flex-1">{{ song.album.name }}</div>
         <!-- 时长 -->
-        <span class="text-xs text-gray-400 w-10">{{ song.duration | mmss }}</span>
+        <span class="text-xs text-gray-400 w-10">{{ song.duration | dateFmt('mm:ss') }}</span>
       </div>
     </slot>
   </div>
