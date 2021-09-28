@@ -180,43 +180,44 @@ export default {
       relatedList: []
     }
   },
-  beforeRouteUpdate(to, from, next) {
-    // console.log('to:', to)
-    // console.log('from:', from)
-    // console.log('next:', next)
-    this.init()
-    next()
+  watch: {
+    $route: {
+      handler() {
+        this.init()
+      },
+      deep: true
+    }
   },
   methods: {
     // 获取mv详情
-    async getMvDetail() {
-      const res = await this.$api.getMvDetail(this.mvid)
+    getMvDetail() {
+      const res = this.$api.getMvDetail(this.mvid)
       this.mvdata = res.data
     },
     // 获取mv地址
-    async getMvUrl() {
-      const res = await this.$api.getMvUrl(this.mvid)
+    getMvUrl() {
+      const res = this.$api.getMvUrl(this.mvid)
       this.mvurl = res.data.url
     },
     // 获取mv点赞转发评论数数据
-    async getMvDetailInfo() {
-      const res = await this.$api.getMvDetailInfo(this.mvid)
+    getMvDetailInfo() {
+      const res = this.$api.getMvDetailInfo(this.mvid)
       this.mvDetailInfo = { ...res }
     },
     // 获取精彩评论
-    async getHotComment() {
-      const res = await this.$api.getCommentHot({ id: this.mvid, type: 1 })
+    getHotComment() {
+      const res = this.$api.getCommentHot({ id: this.mvid, type: 1 })
       this.hotComments = res.hotComments
     },
     // 获取最新评论
-    async getNewComment() {
-      const res = await this.$api.getCommentMv(this.queryInfo)
+    getNewComment() {
+      const res = this.$api.getCommentMv(this.queryInfo)
       this.newComments = res.comments
       this.total = res.total
     },
     // 获取相关推荐列表
-    async getRelatedList() {
-      const res = await this.$api.getRelatedAllvideo(this.mvid)
+    getRelatedList() {
+      const res = this.$api.getRelatedAllvideo(this.mvid)
       this.relatedList = res.data
     },
     handleChange(val) {
@@ -230,12 +231,29 @@ export default {
     },
     // 初始化数据
     init() {
-      this.getMvDetail()
-      this.getMvUrl()
-      this.getMvDetailInfo()
-      this.getHotComment()
-      this.getNewComment()
-      this.getRelatedList()
+      Promise.all([
+        this.$api.getMvDetail(this.mvid),
+        this.$api.getMvUrl(this.mvid),
+        this.$api.getMvDetailInfo(this.mvid),
+        this.$api.getCommentHot({ id: this.mvid, type: 1 }),
+        this.$api.getCommentMv(this.queryInfo),
+        this.$api.getRelatedAllvideo(this.mvid)
+      ])
+        .then(resList => {
+          this.mvdata = resList[0].data
+          this.mvurl = resList[1].data.url
+          this.mvDetailInfo = { ...resList[2] }
+          this.hotComments = resList[3].hotComments
+          this.newComments = resList[4].comments
+          this.total = resList[4].total
+          this.relatedList = resList[5].data
+        })
+        .catch(err => {
+          return this.$notify.error({
+            title: '错误',
+            message: err
+          })
+        })
     }
   },
   created() {
