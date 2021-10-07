@@ -1,0 +1,44 @@
+.text-2-ellipsis {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+
+.single-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-break: break-all;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.absolute-center {
+	@apply absolute transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+.flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.el-popover {
+	padding: 0 !important;
+}
+
+.playlist-popover {
+	padding: 0 !important;
+	top: 50px !important;
+	bottom: 60px !important;
+	margin-bottom: 0 !important;
+}
+
+.userInfo-popover {
+	padding: 0 !important;
+	left: 180px !important;
+}
+
+.volume-popover {
+	width: 30px !important;
+}

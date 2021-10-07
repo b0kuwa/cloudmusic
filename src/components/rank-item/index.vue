@@ -1,13 +1,9 @@
 <template>
   <div class="flex mb-4">
-    <div class="album">
-      <el-image :src="playlist.coverImgUrl" class="w-44 rounded-md">
-        <div slot="placeholder">
-          <img src="@/assets/images/default.jpg" class="w-full h-full" />
-        </div>
-      </el-image>
+    <div class="album cursor-pointer" >
+	    <m-image :src="playlist.coverImgUrl" style="width: 175px;"></m-image>
       <!-- 播放图标 -->
-      <span class="iconfont icon-play1 play-icon absolute-center"></span>
+      <span class="iconfont icon-play1 play-icon absolute-center" @click="playAll"></span>
     </div>
     <div class="flex-1 cursor-default ml-5 flex flex-col justify-between">
       <ul>
@@ -44,7 +40,7 @@ export default {
     // 查看更多
     goMore() {
       this.$router.push({
-        name: 'songlist',
+        path: '/songlist',
         query: {
           id: this.id
         }
@@ -54,20 +50,20 @@ export default {
     async getPlaylistTop5() {
       const res = await this.$api.getPlaylistDetail(this.id)
       if (res.code !== 200) {
-        return
+        return this.$notify.error('获取歌单失败！')
       }
       this.playlist = res.playlist
       this.tracks = res.playlist.tracks.slice(0, 5)
-    }
+    },
+		// 播放全部
+	  playAll(){
+    	this.$store.dispatch('setPlaylist',this.playlist.tracks)
+	  }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.absolute-center {
-  @apply absolute transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
-}
-
 .album {
   @apply relative;
   .play-icon {

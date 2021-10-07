@@ -1,0 +1,23 @@
+<template>
+    <div class="loading-wrap">
+        <span class="el-icon-loading"></span>
+        <span>{{ text }}</span>
+    </div>
+</template>
+
+<script>
+export default {
+    props: {
+        text: {
+            type: String,
+            default: '正在加载中...'
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.loading-wrap {
+    @apply flex flex-col justify-center items-center gap-2 text-sm;
+}
+</style>

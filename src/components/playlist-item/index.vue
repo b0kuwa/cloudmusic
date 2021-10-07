@@ -1,11 +1,7 @@
 <template>
   <div class="card">
     <div class="relative">
-      <el-image :src="album" :style="imageStyle" class="w-full h-full rounded-md">
-        <div slot="placeholder" class="w-full h-full">
-          <img src="@/assets/images/default.jpg" alt="Error" class="w-full h-full" />
-        </div>
-      </el-image>
+      <m-image :src="src" :style="imageStyle"></m-image>
       <div class="flex items-center text-xs text-white absolute top-0.5 right-0.5">
         <span class="el-icon-headset mx-0.5"></span>
         {{ num | numFmtThousand }}
@@ -14,7 +10,7 @@
         <span class="iconfont icon-play1 text-red-500" style="font-size: 40px"></span>
       </div>
     </div>
-    <p class="label">
+    <p class="label text-2-ellipsis">
       {{ label }}
     </p>
   </div>
@@ -23,7 +19,7 @@
 <script>
 export default {
   props: {
-    album: {
+    src: {
       type: String
     },
     label: {
@@ -40,11 +36,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.card{
+    //@apply shadow-sm;
+}
 .label {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
   height: 4em;
   @apply text-xs text-gray-600 hover:text-gray-900 py-1 px-0.5;
 }

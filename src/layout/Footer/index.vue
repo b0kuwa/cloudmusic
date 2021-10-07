@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <audio-player></audio-player>
-  </div>
+	<div class="footer__wrap">
+		<m-audio></m-audio>
+	</div>
 </template>
 
 <script>
-import AudioPlayer from '@/components/audio-player'
-export default {
-  components: {
-    AudioPlayer
-  }
-}
+export default {}
 </script>
 
 <style lang="scss" scoped>
+.footer__wrap {
+	height: 60px;
+}
 </style>

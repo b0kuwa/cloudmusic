@@ -28,15 +28,15 @@
 
     <main class="grid grid-cols-3 gap-4 overflow-auto" v-infinite-scroll="load">
       <router-link
-        :to="{ name: 'songlist', query: { id: item.id } }"
+        :to="{ path: '/songlist', query: { id: item.id } }"
         class="flex overflow-hidden"
         v-for="(item, index) in playlist"
         :key="index"
       >
         <div class="relative album">
-          <img :src="item.coverImgUrl" class="rounded-md object-cover" />
+	        <m-image :src="item.coverImgUrl" style="width: 135px;height: 135px;"></m-image>
           <span class="text-white absolute top-0.5 right-1 text-xs flex items-center">
-            <i class="el-icon-headset text-white"></i>{{ item.playCount | numberFormatThousand }}</span
+            <i class="el-icon-headset text-white"></i>{{ item.playCount | numFmtThousand }}</span
           >
           <i
             class="iconfont icon-play1 absolute right-1 bottom-0 text-red-500 hover:opacity-100 opacity-0"

@@ -1,15 +1,12 @@
 <template>
   <div>
-    <top-bar></top-bar>
+	  FM
   </div>
 </template>
 
 <script>
-import TopBar from '@/components/top-bar'
 export default {
-  components: {
-    TopBar
-  }
+
 }
 </script>
 

@@ -23,8 +23,8 @@ export default {
     methods: {
         // 获取全部视频列表
         async getVideoTimelineAll() {
-            const res = await this.$api.getVideoTimelineAll();
-            
+            // const res = await this.$api.getVideoTimelineAll();
+
         }
     },
 }

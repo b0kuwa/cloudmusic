@@ -7,3 +7,11 @@ export const handlePlaylist = songs => {
         return createSong(item)
     })
 }
+
+export const getStorage = (k) => window.localStorage.getItem(k)
+
+export const setStorage = (k,v) => window.localStorage.setItem(k,v)
+
+export const removeStorage = (k) => window.localStorage.removeItem(k)
+
+export const clearStorage = ()=> window.localStorage.clear()

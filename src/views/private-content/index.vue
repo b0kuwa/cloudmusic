@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import TopBar from '@/components/top-bar'
+import TopBar from '@/components/nav-header'
 import PrivateContentItem from './private-content-item'
 export default {
   components: {
