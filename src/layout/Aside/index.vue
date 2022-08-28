@@ -3,12 +3,9 @@
 		<!-- 用户头像 -->
 		<el-popover placement="right" trigger="click" style="width: 325px;" :visible-arrow="false" popper-class="userInfo-popover">
 			<ul>
-				<li class="cursor-pointer hover:bg-gray-100 px-2 py-1 w-full">
-					<i class="el-icon-switch-button"></i> 退出登录
-				</li>
+				<li class="cursor-pointer hover:bg-gray-100 px-2 py-1 w-full"><i class="el-icon-switch-button"></i> 退出登录</li>
 			</ul>
-			<div slot="reference" class="flex items-center gap-2 px-2 cursor-default py-2"
-			     @click.stop="showLoginDialog">
+			<div slot="reference" class="flex items-center gap-2 px-2 cursor-default py-2" @click.stop="showLoginDialog">
 				<!-- 登录状态 -->
 				<div class="rounded-full bg-white w-12 h-12 border flex justify-center items-center">
 					<el-avatar size="medium" :src="userInfo.avatarUrl">
@@ -32,26 +29,24 @@
 			</router-link>
 		</div>
 		<!-- 登录对话框 -->
-		<el-dialog title="登录" :visible.sync="dialogVisible" center width="350px" @close="closeLoginDialog"
-		           @keyup.enter="login">
+		<el-dialog title="登录" :visible.sync="dialogVisible" center width="350px" @close="closeLoginDialog" @keyup.enter="login">
 			<el-form :model="loginForm" :rules="loginRules" ref="loginFormRef">
 				<el-form-item prop="phone">
 					<el-input prefix-icon="el-icon-user" v-model="loginForm.phone" placeholder="手机号"></el-input>
 				</el-form-item>
 				<el-form-item prop="password">
-					<el-input prefix-icon="el-icon-lock" type="password" v-model="loginForm.password"
-					          placeholder="密码"></el-input>
+					<el-input prefix-icon="el-icon-lock" type="password" v-model="loginForm.password" placeholder="密码"></el-input>
 				</el-form-item>
 			</el-form>
 			<span slot="footer" class="dialog-footer">
-        <button class="login-btn" @click="login">登录</button>
-      </span>
+				<button class="login-btn" @click="login">登录</button>
+			</span>
 		</el-dialog>
 	</aside>
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 import mixin from './mixin'
 
 export default {
@@ -75,10 +70,7 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters([
-			'userInfo',
-			'loginStatus'
-		])
+		...mapGetters(['userInfo', 'loginStatus'])
 	},
 	methods: {
 		// 登录
@@ -160,7 +152,7 @@ ul li span {
 }
 
 .router-link-active {
-	@apply text-red-600 bg-gray-200 ;
+	@apply text-red-600 bg-gray-200;
 }
 
 .el-popover {

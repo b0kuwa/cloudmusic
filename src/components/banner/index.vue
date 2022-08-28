@@ -1,3 +1,10 @@
+<!--
+ * @Author: cully fung
+ * @Date: 2021-09-19 15:55:38
+ * @LastEditTime: 2022-08-28 23:57:21
+ * @LastEditors: cully fung
+ * @Description:
+-->
 <template>
 	<el-carousel :interval="4000" type="card" indicator-position="outside" height="200px">
 		<el-carousel-item v-for="(item, index) in banners" :key="index">

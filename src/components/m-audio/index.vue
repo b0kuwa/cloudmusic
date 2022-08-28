@@ -2,7 +2,7 @@
 	<div class="relative w-full bg-gray-50" style="height: 60px;">
 		<!-- 音乐播放进度条 -->
 		<div class="slider__wrap">
-			<div class="slider__line" :style="{width:progress}"></div>
+			<div class="slider__line" :style="{ width: progress }"></div>
 		</div>
 		<!-- 内容区 -->
 		<div class="flex justify-between items-center w-full relative px-1" style="height: 50px;">
@@ -20,14 +20,14 @@
 				</div>
 			</div>
 			<!-- 控制器 -->
-			<div class="text-red-500 flex items-center absolute-center"
-			     style="font-size: 20px">
+			<div class="text-red-500 flex items-center absolute-center" style="font-size: 20px">
 				<!-- 上一首 -->
 				<span class="material-icons cursor-pointer" style="font-size: 25px" @click="prev"> skip_previous </span>
 				<!-- 播放 暂停 -->
-				<span class="material-icons cursor-pointer mx-4" style="font-size: 45px" @click="pause" v-if="isPlaying"> pause_circle </span>
-				<span class="material-icons cursor-pointer mx-4" style="font-size: 45px" @click="play"
-				      v-else> play_circle </span>
+				<span class="material-icons cursor-pointer mx-4" style="font-size: 45px" @click="pause" v-if="isPlaying">
+					pause_circle
+				</span>
+				<span class="material-icons cursor-pointer mx-4" style="font-size: 45px" @click="play" v-else> play_circle </span>
 				<!-- 下一首 -->
 				<span class="material-icons cursor-pointer" style="font-size: 25px" @click="next"> skip_next </span>
 			</div>
@@ -39,14 +39,16 @@
 							<h1 class="text-xl font-medium">当前播放</h1>
 							<p class="flex justify-between items-center my-1">
 								<span class="text-gray-400 text-xs">总{{ songCount }}首</span>
-								<span @click="clearPlaylist"
-								      class="text-sm text-blue-400 hover:text-blue-500 cursor-pointer">清空列表</span>
+								<span @click="clearPlaylist" class="text-sm text-blue-400 hover:text-blue-500 cursor-pointer">清空列表</span>
 							</p>
 						</header>
 						<main class="overflow-y-auto" style="height: calc(100vh - 200px);">
 							<ul class="playlist single-ellipsis">
-								<li v-for="(item, index) in playlist" :key="item.id"
-								    class="flex px-4 py-2 text-xs justify-between cursor-default">
+								<li
+									v-for="(item, index) in playlist"
+									:key="item.id"
+									class="flex px-4 py-2 text-xs justify-between cursor-default"
+								>
 									<p class="text-gray-700 w-52 single-ellipsis" :class="{ active: currentIndex === index }">
 										{{ item.name }}
 									</p>
@@ -63,8 +65,13 @@
 				<!-- 音量控制 -->
 				<el-popover placement="top" trigger="hover" width="30" popper-class="volume-popover">
 					<el-slider v-model="volume" vertical height="100px"></el-slider>
-					<span class="material-icons cursor-pointer" style="transform: scale(0.8)" slot="reference"
-					      v-text="volume > 0 ? 'volume_up' : 'volume_off'"> </span>
+					<span
+						class="material-icons cursor-pointer"
+						style="transform: scale(0.8)"
+						slot="reference"
+						v-text="volume > 0 ? 'volume_up' : 'volume_off'"
+					>
+					</span>
 				</el-popover>
 			</div>
 		</div>
@@ -109,7 +116,7 @@ export default {
 			handler(newVal) {
 				// 音量范围设置只能[0,1]
 				this.$refs.audioRef.volume = newVal / 100
-			},
+			}
 		},
 		currentPlay(newValue) {
 			if (!newValue.id) {

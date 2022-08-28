@@ -2,7 +2,10 @@
 	<div>
 		<!-- 头部 -->
 		<div class="flex mx-4">
-			<m-image :src="playlist.coverImgUrl || ''" style="width: 200px;"></m-image>
+			<m-image
+				:src="playlist.coverImgUrl || ''"
+				style="width: 200px;"
+			></m-image>
 			<div class="mx-6 flex flex-col justify-between">
 				<!-- 歌单信息 -->
 				<h2 class="text-xl font-medium flex items-center">
@@ -13,23 +16,38 @@
 				<div class="flex items-center">
 					<!-- 头像 -->
 					<router-link to="">
-						<m-image :src="creator.avatarUrl || ''" style="width: 30px;height: 30px;border-radius: 50%;"></m-image>
+						<m-image
+							:src="creator.avatarUrl || ''"
+							style="width: 30px;height: 30px;border-radius: 50%;"
+						></m-image>
 					</router-link>
 					<!-- 昵称 -->
-					<span class="text-sm text-blue-400 mx-2 hover:text-blue-500 cursor-pointer">{{ creator.nickname }}</span>
+					<span
+						class="text-sm text-blue-400 mx-2 hover:text-blue-500 cursor-pointer"
+						>{{ creator.nickname }}</span
+					>
 					<!-- 创建时间 -->
-					<span class="text-gray-600 text-xs cursor-default">{{ playlist.createTime | dateFmt }} 创建</span>
+					<span class="text-gray-600 text-xs cursor-default"
+						>{{ playlist.createTime | dateFmt }} 创建</span
+					>
 				</div>
 				<!-- 操作按钮 -->
 				<div class="grid grid-cols-4 gap-4">
 					<button class="btn-primary outline-none" @click="playAll">
-						<i class="el-icon-video-play"></i> 播放全部 <i class="el-icon-plus"></i>
+						<i class="el-icon-video-play"></i> 播放全部
+						<i class="el-icon-plus"></i>
 					</button>
 					<button class="btn-default">
-						<i class="el-icon-folder-add"></i> 收藏({{ playlist.subscribedCount | numFmtThousand }})
+						<i class="el-icon-folder-add"></i> 收藏({{
+							playlist.subscribedCount | numFmtThousand
+						}})
 					</button>
-					<button class="btn-default"><i class="el-icon-share"></i> 分享</button>
-					<button class="btn-default"><i class="el-icon-download"></i> 下载全部</button>
+					<button class="btn-default">
+						<i class="el-icon-share"></i> 分享
+					</button>
+					<button class="btn-default">
+						<i class="el-icon-download"></i> 下载全部
+					</button>
 				</div>
 				<!-- 标签 -->
 				<ul class="description grid grid-cols-1 gap-2 text-xs cursor-default">
@@ -55,13 +73,21 @@
 					</li>
 					<li>
 						<span class="single-justify">简介</span><span class="mr-1">:</span>
-						<span class="content single-ellipsis" :title="playlist.description">{{ playlist.description }}</span>
+						<span
+							class="content single-ellipsis"
+							:title="playlist.description"
+							>{{ playlist.description }}</span
+						>
 					</li>
 				</ul>
 			</div>
 		</div>
 		<!-- 内容展示 -->
-		<el-tabs v-model="activeTabName" @tab-click="handleTabClick" class="px-4 cursor-default">
+		<el-tabs
+			v-model="activeTabName"
+			@tab-click="handleTabClick"
+			class="px-4 cursor-default"
+		>
 			<!-- 歌曲列表-->
 			<el-tab-pane label="歌曲列表" name="songlist">
 				<song :songs="songs"></song>
@@ -75,7 +101,6 @@
 				<collector :subscribers="subscribers"></collector>
 			</el-tab-pane>
 		</el-tabs>
-
 	</div>
 </template>
 
@@ -147,7 +172,10 @@ export default {
 		// 获取收藏者
 		async getSubscribers() {
 			this.loading = true
-			const res = await this.$api.getPlaylistSubscribers({ id: this.id, limit: 30 })
+			const res = await this.$api.getPlaylistSubscribers({
+				id: this.id,
+				limit: 30
+			})
 			this.loading = false
 			if (res.code !== 200) {
 				return this.$notify.error('获取歌单收藏者失败！')
@@ -162,7 +190,6 @@ export default {
 					this.init()
 					break
 				case 'comment':
-
 					break
 				case 'subscribers':
 					this.getSubscribers()
@@ -184,7 +211,6 @@ export default {
 </script>
 
 <style scoped>
-
 .btn-default {
 	@apply rounded-xl px-4 py-1 border text-gray-900 text-sm hover:bg-gray-100 text-center;
 }
@@ -217,5 +243,4 @@ export default {
 	content: '/';
 	@apply cursor-default text-gray-900;
 }
-
 </style>

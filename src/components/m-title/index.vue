@@ -1,3 +1,10 @@
+<!--
+ * @Author: cully fung
+ * @Date: 2021-09-20 14:34:47
+ * @LastEditTime: 2022-08-28 23:57:38
+ * @LastEditors: cully fung
+ * @Description:
+-->
 <script>
 export default {
 	props: {
@@ -43,5 +50,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

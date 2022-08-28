@@ -5,14 +5,14 @@
 		</el-header>
 		<el-container style="height: calc(100vh - 110px);overflow: hidden">
 			<el-aside width="200px">
-				<Aside/>
+				<Aside />
 			</el-aside>
 			<el-main>
-				<Main/>
+				<Main />
 			</el-main>
 		</el-container>
 		<el-footer>
-			<Footer/>
+			<Footer />
 		</el-footer>
 	</el-container>
 </template>
@@ -35,7 +35,7 @@ export default {
 				{
 					label: '个性推荐',
 					to: {
-						path:'/discovery/individuation'
+						path: '/discovery/individuation'
 					}
 				},
 				{
