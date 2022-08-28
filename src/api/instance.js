@@ -1,19 +1,16 @@
 /*
  * @Author: cully fung
  * @Date: 2021-06-14 13:37:46
- * @LastEditTime: 2022-08-28 23:38:42
+ * @LastEditTime: 2022-08-28 23:50:45
  * @LastEditors: cully fung
  * @Description:
  */
 import axios from 'axios'
 
-const baseURL = process.env.BASE_URL
-const timeout = 2000
-
 // 创建axios配置
 const instance = axios.create({
-	baseURL,
-	timeout
+	baseURL: process.env.VUE_APP_BASE_URL,
+	timeout: 2000
 })
 
 // 请求拦截器
@@ -24,8 +21,8 @@ instance.interceptors.request.use(config => {
 // 响应拦截器
 instance.interceptors.response.use(
 	// 成功回调
-	responese => {
-		return responese.data
+	response => {
+		return response.data
 	},
 	// 失败回调
 	async error => {
