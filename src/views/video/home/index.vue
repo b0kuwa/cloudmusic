@@ -1,7 +1,7 @@
 <!--
  * @Author: cully fung
  * @Date: 2021-08-25 16:28:56
- * @LastEditTime: 2022-08-29 00:06:27
+ * @LastEditTime: 2022-08-29 23:41:17
  * @LastEditors: cully fung
  * @Description:
 -->
@@ -29,9 +29,7 @@ export default {
 	},
 	methods: {
 		// 获取全部视频列表
-		async getVideoTimelineAll() {
-			// const res = await this.$api.getVideoTimelineAll();
-		}
+		async getVideoTimelineAll() {}
 	}
 }
 </script>

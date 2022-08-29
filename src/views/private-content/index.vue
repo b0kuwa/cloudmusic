@@ -1,7 +1,7 @@
 <!--
  * @Author: cully fung
  * @Date: 2021-08-24 14:29:20
- * @LastEditTime: 2022-08-29 00:03:43
+ * @LastEditTime: 2022-08-29 23:41:31
  * @LastEditors: cully fung
  * @Description:
 -->
@@ -18,7 +18,10 @@
 				v-for="item in privateContentList"
 				:key="item.id || item.time"
 			>
-				<private-content-item :src="item.picUrl" :title="item.name"></private-content-item>
+				<private-content-item
+					:src="item.picUrl"
+					:title="item.name"
+				></private-content-item>
 			</router-link>
 			<p v-if="loading" class="text-center">正在加载中。。。</p>
 			<p v-if="!more" class="text-center">已经加载完毕了</p>
@@ -27,6 +30,7 @@
 </template>
 
 <script>
+import { getPersonalizedPrivateContentList } from '@/api'
 import TopBar from '@/components/nav-header'
 import PrivateContentItem from './private-content-item'
 export default {
@@ -58,7 +62,7 @@ export default {
 		async getPersonalizedPrivateContentList() {
 			this.loading = true
 			this.query.offset = (this.currentPage - 1) * this.query.limit
-			const res = await this.$api.getPersonalizedPrivateContentList(this.query)
+			const res = await getPersonalizedPrivateContentList(this.query)
 			if (res.code !== 200) {
 				return this.$message.error('获取独家放送失败！')
 			}

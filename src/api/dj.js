@@ -1,17 +1,18 @@
-import api from '../instance'
+import http from '@/utils/http'
 
 /**
  * 获取电台banner
  * @returns
  */
-export const getDjBanner = () => api.get('/dj/banner')
+export const getDjBanner = () => http.get('/dj/banner')
 
 /**
  * 获取电台个性推荐
  * @param {*} limit 返回数量,默认为 6,总条数最多6条
  * @returns
  */
-export const getDjPersonalizeRecommend = (limit = 6) => api.get('/dj/personalize/recommend', { params: { limit } })
+export const getDjPersonalizeRecommend = (limit = 6) =>
+	http.get('/dj/personalize/recommend', { params: { limit } })
 
 /**
  * 获取电台订阅者列表
@@ -21,14 +22,15 @@ export const getDjPersonalizeRecommend = (limit = 6) => api.get('/dj/personalize
  * @returns
  * 例子： /dj/subscriber?id=335425050&time=1602761825390
  */
-export const getDjSubscriber = (id, time = -1, limit = 20) => api.get('/dj/subscriber', { params: { id, time, limit } })
+export const getDjSubscriber = (id, time = -1, limit = 20) =>
+	http.get('/dj/subscriber', { params: { id, time, limit } })
 
 /**
  * 获取用户电台
  * @param {*} uid 用户id
  * @returns
  */
-export const getUserAudio = uid => api.get('/user/audio', { params: { uid } })
+export const getUserAudio = uid => http.get('/user/audio', { params: { uid } })
 
 /**
  *  获取热门电台
@@ -36,7 +38,8 @@ export const getUserAudio = uid => api.get('/user/audio', { params: { uid } })
  * @param {*} offset 偏移数量，用于分页 , 如 :( 页数 -1)*30, 其中 30 为 limit 的值 , 默认为 0
  * @returns
  */
-export const getDjHot = (limit = 30, offset = 0) => api.get('/dj/hot', { params: { limit, offset } })
+export const getDjHot = (limit = 30, offset = 0) =>
+	http.get('/dj/hot', { params: { limit, offset } })
 
 /**
  * 获取电台-节目榜
@@ -45,42 +48,48 @@ export const getDjHot = (limit = 30, offset = 0) => api.get('/dj/hot', { params:
  * @param {*} offset 偏移数量，用于分页 , 如 :( 页数 -1)*100, 其中 100 为 limit 的值 , 默认为 0
  * @returns
  */
-export const getDjProgramToplist = (limit = 100, offset = 0) => api.get('/dj/program/toplist', { params: { limit, offset } })
+export const getDjProgramToplist = (limit = 100, offset = 0) =>
+	http.get('/dj/program/toplist', { params: { limit, offset } })
 
 /**
  * 获取电台-付费精品
  * @param {*} limit 返回数量 , 默认为 100 (不支持 offset)
  * @returns
  */
-export const getDjToplistPay = (limit = 100) => api.get('/dj/toplist/pay', { params: { limit } })
+export const getDjToplistPay = (limit = 100) =>
+	http.get('/dj/toplist/pay', { params: { limit } })
 
 /**
  * 获取电台 - 24小时节目榜
  * @param {*} limit 返回数量 , 默认为 100 (不支持 offset)
  * @returns
  */
-export const getDjProgramToplistHours = (limit = 100) => api.get('/dj/program/toplist/hours', { params: { limit } })
+export const getDjProgramToplistHours = (limit = 100) =>
+	http.get('/dj/program/toplist/hours', { params: { limit } })
 
 /**
  * 获取电台 - 24小时主播榜
  * @param {*} limit 返回数量 , 默认为 100 (不支持 offset)
  * @returns
  */
-export const getDjToplistHours = (limit = 100) => api.get('/dj/toplist/hours', { params: { limit } })
+export const getDjToplistHours = (limit = 100) =>
+	http.get('/dj/toplist/hours', { params: { limit } })
 
 /**
  * 获取电台 - 主播新人榜
  * @param {*} limit 返回数量 , 默认为 100 (不支持 offset)
  * @returns
  */
-export const getDjToplistNewcomer = (limit = 100) => api.get('/dj/toplist/newcomer', { params: { limit } })
+export const getDjToplistNewcomer = (limit = 100) =>
+	http.get('/dj/toplist/newcomer', { params: { limit } })
 
 /**
  *  获取电台 - 最热主播榜
  * @param {*} limit 返回数量 , 默认为 100 (不支持 offset)
  * @returns
  */
-export const getDjToplistPopular = (limit = 100) => api.get('/dj/toplist/popular', { params: { limit } })
+export const getDjToplistPopular = (limit = 100) =>
+	http.get('/dj/toplist/popular', { params: { limit } })
 
 /**
  * 获取电台 - 新晋电台榜/热门电台榜
@@ -89,7 +98,8 @@ export const getDjToplistPopular = (limit = 100) => api.get('/dj/toplist/popular
  * @param {*} type 榜单类型, new 为新晋电台榜,hot为热门电台榜 默认new
  * @returns
  */
-export const getDjToplist = (limit = 100, offset = 0, type = 'new') => api.get('/dj/toplist', { params: { limit, offset, type } })
+export const getDjToplist = (limit = 100, offset = 0, type = 'new') =>
+	http.get('/dj/toplist', { params: { limit, offset, type } })
 
 /**
  * 获取电台 - 类别热门电台
@@ -98,18 +108,19 @@ export const getDjToplist = (limit = 100, offset = 0, type = 'new') => api.get('
  * @param {*} offset 偏移数量，用于分页 , 如 :( 页数 -1)*30, 其中 30 为 limit 的值 , 默认为 0
  * @returns
  */
-export const getDjRadioHot = (cateId, limit = 30, offset = 0) => api.get('/dj/radio/hot', { params: { cateId, limit, offset } })
+export const getDjRadioHot = (cateId, limit = 30, offset = 0) =>
+	http.get('/dj/radio/hot', { params: { cateId, limit, offset } })
 
 /**
  *  获取电台推荐
  *  登录后调用此接口 , 可获得推荐电台
  * @returns
  */
-export const getDjRecommend = () => api.get('/dj/recommend')
+export const getDjRecommend = () => http.get('/dj/recommend')
 
 /**
  * 获取电台分类
  * 登录后调用此接口 , 可获得电台类型
  * @returns
  */
-export const getDjCatelist = () => api.get('/dj/catelist')
+export const getDjCatelist = () => http.get('/dj/catelist')

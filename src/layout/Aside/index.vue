@@ -1,18 +1,34 @@
 <template>
 	<aside>
 		<!-- 用户头像 -->
-		<el-popover placement="right" trigger="click" style="width: 325px;" :visible-arrow="false" popper-class="userInfo-popover">
+		<el-popover
+			placement="right"
+			trigger="click"
+			style="width: 325px;"
+			:visible-arrow="false"
+			popper-class="userInfo-popover"
+		>
 			<ul>
-				<li class="cursor-pointer hover:bg-gray-100 px-2 py-1 w-full"><i class="el-icon-switch-button"></i> 退出登录</li>
+				<li class="cursor-pointer hover:bg-gray-100 px-2 py-1 w-full">
+					<i class="el-icon-switch-button"></i> 退出登录
+				</li>
 			</ul>
-			<div slot="reference" class="flex items-center gap-2 px-2 cursor-default py-2" @click.stop="showLoginDialog">
+			<div
+				slot="reference"
+				class="flex items-center gap-2 px-2 cursor-default py-2"
+				@click.stop="showLoginDialog"
+			>
 				<!-- 登录状态 -->
-				<div class="rounded-full bg-white w-12 h-12 border flex justify-center items-center">
-					<el-avatar size="medium" :src="userInfo.avatarUrl">
+				<div
+					class="rounded-full bg-white w-12 h-12 border flex justify-center items-center"
+				>
+					<el-avatar size="medium" :src="userInfo && userInfo.avatarUrl">
 						<i class="el-icon-user"></i>
 					</el-avatar>
 				</div>
-				<span class="text-sm">{{ userInfo.nickname || '未登录' }}</span>
+				<span class="text-sm">{{
+					(userInfo && userInfo.nickname) || '未登录'
+				}}</span>
 				<span class="el-icon-caret-right text-gray-500"></span>
 			</div>
 		</el-popover>
@@ -29,13 +45,29 @@
 			</router-link>
 		</div>
 		<!-- 登录对话框 -->
-		<el-dialog title="登录" :visible.sync="dialogVisible" center width="350px" @close="closeLoginDialog" @keyup.enter="login">
+		<el-dialog
+			title="登录"
+			:visible.sync="dialogVisible"
+			center
+			width="350px"
+			@close="closeLoginDialog"
+			@keyup.enter="login"
+		>
 			<el-form :model="loginForm" :rules="loginRules" ref="loginFormRef">
 				<el-form-item prop="phone">
-					<el-input prefix-icon="el-icon-user" v-model="loginForm.phone" placeholder="手机号"></el-input>
+					<el-input
+						prefix-icon="el-icon-user"
+						v-model="loginForm.phone"
+						placeholder="手机号"
+					></el-input>
 				</el-form-item>
 				<el-form-item prop="password">
-					<el-input prefix-icon="el-icon-lock" type="password" v-model="loginForm.password" placeholder="密码"></el-input>
+					<el-input
+						prefix-icon="el-icon-lock"
+						type="password"
+						v-model="loginForm.password"
+						placeholder="密码"
+					></el-input>
 				</el-form-item>
 			</el-form>
 			<span slot="footer" class="dialog-footer">
@@ -46,11 +78,11 @@
 </template>
 
 <script>
+import { getUserDetail, login } from '@/api/auth'
+import { setStorage } from '@/utils/storage'
 import { mapGetters } from 'vuex'
-import mixin from './mixin'
 
 export default {
-	mixins: [mixin],
 	data() {
 		return {
 			// 登录对话框显示
@@ -66,7 +98,29 @@ export default {
 				password: [{ required: true, message: '密码不合法', trigger: 'blur' }]
 			},
 			// 个人信息对话框显示
-			userInfoDialogVisible: false
+			userInfoDialogVisible: false,
+			list: Object.freeze([
+				{
+					label: '发现音乐',
+					icon: 'iconfont icon-yinle',
+					to: { path: '/discovery' }
+				},
+				{
+					label: '私人FM',
+					icon: 'iconfont icon-radio',
+					to: { path: '/fm' }
+				},
+				{
+					label: '视频',
+					icon: 'iconfont icon-VideoClip',
+					to: { path: '/video' }
+				},
+				{
+					label: '朋友',
+					icon: 'iconfont icon-friend',
+					to: { path: '/friend' }
+				}
+			])
 		}
 	},
 	computed: {
@@ -79,14 +133,14 @@ export default {
 				if (!valid) {
 					return
 				}
-				const res = await this.$api.login(this.loginForm.phone, this.loginForm.password)
+				const res = await login(this.loginForm.phone, this.loginForm.password)
 				if (res.code !== 200) {
 					this.$refs.loginFormRef.resetFields()
 					return this.$message.error('登录失败！请仔细检查账号或密码是否有误！')
 				}
 				this.getUserDetail(res.profile.userId)
-				window.localStorage.setItem('cookie', res.cookie)
-				window.localStorage.setItem('token', res.token)
+				setStorage('cookie', res.cookie)
+				setStorage('token', res.token)
 				this.dialogVisible = false
 				this.$message.success('登录成功！')
 				this.$forceUpdate()
@@ -94,7 +148,7 @@ export default {
 		},
 		// 获取用户详情
 		async getUserDetail(uid) {
-			const res = await this.$api.getUserDetail(uid)
+			const res = await getUserDetail(uid)
 			if (res.code !== 200) {
 				return this.$message.error('获取用户详情失败！')
 			}
@@ -105,7 +159,7 @@ export default {
 			userInfo.createDays = res.createDays
 			this.$store.commit('SAVE_USER_INFO', userInfo)
 			this.$store.commit('SET_LOGIN_STATUS', true)
-			window.localStorage.setItem('userInfo', JSON.stringify(userInfo))
+			setStorage('userInfo', userInfo)
 		},
 		// 显示登录对话框
 		showLoginDialog() {

@@ -7,26 +7,19 @@
 			style="height: 165px"
 			v-if="quality"
 		>
-			<div class="bg" :style="{ backgroundImage: 'url(' + quality.coverImgUrl + ')' }"></div>
+			<div
+				class="bg"
+				:style="{ backgroundImage: 'url(' + quality.coverImgUrl + ')' }"
+			></div>
 			<div class="flex z-10">
-				<m-image :src="quality.coverImgUrl" style="width: 140px; height: 140px;" class="mx-3"></m-image>
+				<m-image
+					:src="quality.coverImgUrl"
+					style="width: 140px; height: 140px;"
+					class="mx-3"
+				></m-image>
 				<div>
 					<p
-						class="
-                              rounded-2xl
-                              my-4
-                              text-sm
-                              py-1
-                              px-4
-                              flex
-                              gap-2
-                              items-center
-                              justify-center
-                              w-24
-                              whitespace-nowrap
-                              text-yellow-400
-                              bg-transparent
-                              border border-yellow-400"
+						class="rounded-2xl my-4 text-sm py-1 px-4 flex gap-2 items-center justify-center w-24 whitespace-nowrap text-yellow-400 bg-transparent border border-yellow-400"
 					>
 						<i class="el-icon-headset"> </i><span>精品歌单</span>
 					</p>
@@ -37,13 +30,27 @@
 		</router-link>
 		<div class="flex items-center justify-between my-4">
 			<!-- 全部歌单 -->
-			<el-popover placement="bottom-start" width="745" trigger="click" @show="showPopover" v-model="popVisible">
+			<el-popover
+				placement="bottom-start"
+				width="745"
+				trigger="click"
+				@show="showPopover"
+				v-model="popVisible"
+			>
 				<div class="cursor-default">
-					<el-tag type="danger" size="small" @click="handleTagClick">全部歌单</el-tag>
+					<el-tag type="danger" size="small" @click="handleTagClick"
+						>全部歌单</el-tag
+					>
 					<el-divider></el-divider>
-					<dl v-for="item in catelist" :key="item.cat_id" class="flex mb-5 text-sm">
+					<dl
+						v-for="item in catelist"
+						:key="item.cat_id"
+						class="flex mb-5 text-sm"
+					>
 						<!-- 分类标题 -->
-						<dt class="whitespace-nowrap px-3 mr-5 text-gray-300 font-extralight">
+						<dt
+							class="whitespace-nowrap px-3 mr-5 text-gray-300 font-extralight"
+						>
 							{{ item.cat_name }}
 						</dt>
 						<!-- 分类子标题 -->
@@ -119,6 +126,12 @@
 </template>
 
 <script>
+import {
+	getPlaylistCatelist,
+	getPlaylistHot,
+	getTopPlaylist,
+	getTopPlayListHighquality
+} from '@/api/playlist'
 import PlaylistItem from '@/components/playlist-item'
 
 export default {
@@ -170,7 +183,7 @@ export default {
 		// 获取歌单
 		async getTopPlaylist() {
 			this.playlists = []
-			const res = await this.$api.getTopPlaylist(this.queryInfo)
+			const res = await getTopPlaylist(this.queryInfo)
 			if (res.code !== 200) {
 				return this.$message.error('获取歌单失败！')
 			}
@@ -179,7 +192,7 @@ export default {
 		},
 		// 获取热门歌单标签
 		async getPlayListHot() {
-			const res = await this.$api.getPlaylistHot()
+			const res = await getPlaylistHot()
 			if (res.code !== 200) {
 				return this.$message.error('获取热门歌单分类失败！')
 			}
@@ -187,7 +200,7 @@ export default {
 		},
 		// 获取精品歌单
 		async getTopPlayListHighquality() {
-			const res = await this.$api.getTopPlayListHighquality(this.params)
+			const res = await getTopPlayListHighquality(this.params)
 			if (res.code !== 200) {
 				return this.$message.error('获取精品歌单失败！')
 			}
@@ -201,7 +214,7 @@ export default {
 		},
 		// 显示弹出层
 		async showPopover() {
-			const res = await this.$api.getPlaylistCatelist()
+			const res = await getPlaylistCatelist()
 			if (res.code !== 200) {
 				return this.$message.error('获取歌单分类失败！')
 			}

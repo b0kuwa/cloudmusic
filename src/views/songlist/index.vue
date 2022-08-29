@@ -108,16 +108,21 @@
 import Song from './song'
 import Comment from './comment'
 import Collector from './collector'
+import MImage from '@/components/m-image/index.vue'
+import {
+	getPlaylistDetail,
+	getPlaylistSubscribers,
+	getSongDetail
+} from '@/api/playlist'
 
 export default {
 	components: {
 		Song,
 		Comment,
-		Collector
+		Collector,
+		MImage
 	},
-
 	props: ['id'],
-
 	data() {
 		return {
 			// 歌单列表信息
@@ -153,7 +158,7 @@ export default {
 	methods: {
 		async init() {
 			this.loading = true
-			let res = await this.$api.getPlaylistDetail(this.id)
+			let res = await getPlaylistDetail(this.id)
 			this.loading = false
 			if (res.code !== 200) {
 				return this.$notify.error('获取歌单详情失败')
@@ -162,7 +167,7 @@ export default {
 			this.creator = this.playlist.creator
 
 			const trackIds = this.playlist.trackIds.map(item => item.id).toString()
-			res = await this.$api.getSongDetail(trackIds)
+			res = await getSongDetail(trackIds)
 			if (res.code !== 200) {
 				return this.$notify.error('获取歌曲详情失败')
 			}
@@ -172,7 +177,7 @@ export default {
 		// 获取收藏者
 		async getSubscribers() {
 			this.loading = true
-			const res = await this.$api.getPlaylistSubscribers({
+			const res = await getPlaylistSubscribers({
 				id: this.id,
 				limit: 30
 			})

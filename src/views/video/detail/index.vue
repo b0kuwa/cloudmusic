@@ -159,6 +159,15 @@
 </template>
 
 <script>
+import { getCommentHot } from '@/api'
+import {
+	getCommentMv,
+	getMvDetail,
+	getMvDetailInfo,
+	getMvUrl,
+	getRelatedAllvideo
+} from '@/api/video'
+
 export default {
 	props: {
 		mvid: {
@@ -213,33 +222,33 @@ export default {
 	methods: {
 		// 获取mv详情
 		getMvDetail() {
-			const res = this.$api.getMvDetail(this.mvid)
+			const res = getMvDetail(this.mvid)
 			this.mvdata = res.data
 		},
 		// 获取mv地址
 		getMvUrl() {
-			const res = this.$api.getMvUrl(this.mvid)
+			const res = getMvUrl(this.mvid)
 			this.mvurl = res.data.url
 		},
 		// 获取mv点赞转发评论数数据
 		getMvDetailInfo() {
-			const res = this.$api.getMvDetailInfo(this.mvid)
+			const res = getMvDetailInfo(this.mvid)
 			this.mvDetailInfo = { ...res }
 		},
 		// 获取精彩评论
 		getHotComment() {
-			const res = this.$api.getCommentHot({ id: this.mvid, type: 1 })
+			const res = getCommentHot({ id: this.mvid, type: 1 })
 			this.hotComments = res.hotComments
 		},
 		// 获取最新评论
 		getNewComment() {
-			const res = this.$api.getCommentMv(this.queryInfo)
+			const res = getCommentMv(this.queryInfo)
 			this.newComments = res.comments
 			this.total = res.total
 		},
 		// 获取相关推荐列表
 		getRelatedList() {
-			const res = this.$api.getRelatedAllvideo(this.mvid)
+			const res = getRelatedAllvideo(this.mvid)
 			this.relatedList = res.data
 		},
 		handleChange(val) {
@@ -257,12 +266,12 @@ export default {
 		// 初始化数据
 		init() {
 			Promise.all([
-				this.$api.getMvDetail(this.mvid),
-				this.$api.getMvUrl(this.mvid),
-				this.$api.getMvDetailInfo(this.mvid),
-				this.$api.getCommentHot({ id: this.mvid, type: 1 }),
-				this.$api.getCommentMv(this.queryInfo),
-				this.$api.getRelatedAllvideo(this.mvid)
+				getMvDetail(this.mvid),
+				getMvUrl(this.mvid),
+				getMvDetailInfo(this.mvid),
+				getCommentHot({ id: this.mvid, type: 1 }),
+				getCommentMv(this.queryInfo),
+				getRelatedAllvideo(this.mvid)
 			])
 				.then(resList => {
 					this.mvdata = resList[0].data

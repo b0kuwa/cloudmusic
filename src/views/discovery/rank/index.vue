@@ -1,7 +1,7 @@
 <!--
  * @Author: cully fung
  * @Date: 2021-08-01 21:15:46
- * @LastEditTime: 2022-08-29 00:03:25
+ * @LastEditTime: 2022-08-29 23:22:40
  * @LastEditors: cully fung
  * @Description:
 -->
@@ -10,29 +10,18 @@
 		<!-- 官方榜单 -->
 		<div>
 			<h1 class="font-medium cursor-default mb-5">官方榜</h1>
-			<rank-item v-for="item in toplist.slice(0, 4)" :key="item.id" :id="item.id"></rank-item>
+			<rank-item
+				v-for="item in officialRank"
+				:key="item.id"
+				:id="item.id"
+			></rank-item>
 		</div>
 		<!-- 全球榜 -->
 		<div>
 			<h1 class="title">全球榜</h1>
 			<div class="grid grid-cols-6 gap-4">
 				<router-link
-					:to="{
-						path: '/songlist',
-						query: {
-							id: toplist[4].id
-						}
-					}"
-				>
-					<playlist-item
-						:src="toplist[4].coverImgUrl"
-						:label="toplist[4].name"
-						:num="toplist[4].playCount"
-						position="center"
-					></playlist-item>
-				</router-link>
-				<router-link
-					v-for="item in toplist.slice(5)"
+					v-for="item in globalRank"
 					:key="item.id"
 					:to="{
 						path: '/songlist',
@@ -41,7 +30,12 @@
 						}
 					}"
 				>
-					<playlist-item :src="item.coverImgUrl" :label="item.name" :num="item.playCount" position="center"></playlist-item>
+					<playlist-item
+						:src="item.coverImgUrl"
+						:label="item.name"
+						:num="item.playCount"
+						position="center"
+					></playlist-item>
 				</router-link>
 			</div>
 		</div>
@@ -51,11 +45,21 @@
 <script>
 import RankItem from '@/components/rank-item'
 import PlaylistItem from '@/components/playlist-item'
+import { getToplist } from '@/api'
 
 export default {
+	name: 'Rank',
 	components: {
 		RankItem,
 		PlaylistItem
+	},
+	computed: {
+		officialRank() {
+			return this.toplist.filter(item => !!item.ToplistType)
+		},
+		globalRank() {
+			return this.toplist.filter(item => !item.ToplistType)
+		}
 	},
 	data() {
 		return {
@@ -67,7 +71,7 @@ export default {
 	methods: {
 		// 获取排行榜
 		async getTopList() {
-			const res = await this.$api.getToplist()
+			const res = await getToplist()
 			if (res.code !== 200) {
 				return this.$notify.error('获取排行榜失败！')
 			}

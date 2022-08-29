@@ -1,7 +1,7 @@
 <!--
  * @Author: cully fung
  * @Date: 2021-08-23 18:13:08
- * @LastEditTime: 2022-08-29 00:03:32
+ * @LastEditTime: 2022-08-29 23:21:04
  * @LastEditors: cully fung
  * @Description:
 -->
@@ -13,11 +13,7 @@
 
 <script>
 export default {
-	data() {
-		return {
-			// 不会变动的数据 没必要设置为响应式数据
-		}
-	}
+	name: 'Discovery'
 }
 </script>
 

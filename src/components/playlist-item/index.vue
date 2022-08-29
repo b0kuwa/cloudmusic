@@ -1,7 +1,7 @@
 <!--
  * @Author: cully fung
  * @Date: 2021-08-28 23:49:39
- * @LastEditTime: 2022-08-28 23:58:00
+ * @LastEditTime: 2022-08-29 22:31:26
  * @LastEditors: cully fung
  * @Description:
 -->
@@ -9,12 +9,20 @@
 	<div class="card">
 		<div class="relative">
 			<m-image :src="src" :style="imageStyle"></m-image>
-			<div class="flex items-center text-xs text-white absolute top-0.5 right-0.5">
+			<div
+				class="flex items-center text-xs text-white absolute top-0.5 right-0.5"
+			>
 				<span class="el-icon-headset mx-0.5"></span>
 				{{ num | numFmtThousand }}
 			</div>
-			<div class="play-icon opacity-0 transition-all absolute" :class="position">
-				<span class="iconfont icon-play1 text-red-500" style="font-size: 40px"></span>
+			<div
+				class="play-icon opacity-0 transition-all absolute"
+				:class="position"
+			>
+				<span
+					class="iconfont icon-play1 text-red-500"
+					style="font-size: 40px"
+				></span>
 			</div>
 		</div>
 		<p class="label text-2-ellipsis">
@@ -24,6 +32,7 @@
 </template>
 
 <script>
+import MImage from '@/components/m-image/index.vue'
 export default {
 	props: {
 		src: {
@@ -38,7 +47,8 @@ export default {
 			default: 0
 		},
 		position: { type: String, default: 'rb' }
-	}
+	},
+	components: { MImage }
 }
 </script>
 

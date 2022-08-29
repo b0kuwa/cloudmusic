@@ -1,8 +1,14 @@
+/*
+ * @Author: cully fung
+ * @Date: 2021-06-14 11:38:16
+ * @LastEditTime: 2022-08-29 20:01:52
+ * @LastEditors: cully fung
+ * @Description:
+ */
 import Vue from 'vue'
 import App from '@/App.vue'
 import store from '@/store'
 import router from '@/router'
-import api from '@/api'
 
 import 'tailwindcss/tailwind.css'
 import '@/assets/css/global.scss'
@@ -15,10 +21,11 @@ import '@/filters'
 import '@/global-components'
 
 import '@/conf'
+import http from './utils/http'
 
 Vue.config.productionTip = false
 
-Vue.prototype.$api = api
+Vue.prototype.$http = http
 
 new Vue({
 	el: '#app',

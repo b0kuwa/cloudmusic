@@ -1,7 +1,7 @@
 <!--
  * @Author: cully fung
  * @Date: 2021-10-01 18:28:24
- * @LastEditTime: 2022-08-28 23:57:27
+ * @LastEditTime: 2022-08-29 23:19:52
  * @LastEditors: cully fung
  * @Description:
 -->
@@ -18,6 +18,7 @@
 
 <script>
 export default {
+	name: 'MImage',
 	props: {
 		src: {
 			type: String,

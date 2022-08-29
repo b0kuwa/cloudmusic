@@ -1,14 +1,18 @@
 <!--
  * @Author: cully fung
  * @Date: 2021-06-15 18:04:13
- * @LastEditTime: 2022-08-29 00:02:06
+ * @LastEditTime: 2022-08-29 23:41:41
  * @LastEditors: cully fung
  * @Description:
 -->
 <template>
 	<div class="grid grid-cols-4 gap-4">
 		<router-link
-			:to="{ name: 'videoDetail', params: { mvid: item.id }, query: { title: 'MV详情' } }"
+			:to="{
+				name: 'videoDetail',
+				params: { mvid: item.id },
+				query: { title: 'MV详情' }
+			}"
 			v-for="item in list"
 			:key="item.id"
 			class="cursor-pointer"
@@ -20,16 +24,28 @@
 				>
 					最新热门MV推荐
 				</div>
-				<div class="absolute top-1 right-1 count text-white text-xs flex items-center">
+				<div
+					class="absolute top-1 right-1 count text-white text-xs flex items-center"
+				>
 					<span class="el-icon-headset"></span>{{ item.playCount }}
 				</div>
 			</div>
-			<div class="desc whitespace-nowrap overflow-ellipsis text-sm p-1 overflow-hidden">
+			<div
+				class="desc whitespace-nowrap overflow-ellipsis text-sm p-1 overflow-hidden"
+			>
 				{{ item.name }}
 			</div>
 			<div class="single-ellipsis">
-				<span v-for="(artist, index) in item.artists" :key="artist.id" class="text-sm text-gray-700 hover:text-gray-900 p-1">
-					{{ index === 0 && index !== item.artists.length - 1 ? artist.name + '/' : artist.name }}
+				<span
+					v-for="(artist, index) in item.artists"
+					:key="artist.id"
+					class="text-sm text-gray-700 hover:text-gray-900 p-1"
+				>
+					{{
+						index === 0 && index !== item.artists.length - 1
+							? artist.name + '/'
+							: artist.name
+					}}
 				</span>
 			</div>
 		</router-link>

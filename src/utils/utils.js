@@ -1,7 +1,7 @@
 /*
  * @Author: cully fung
  * @Date: 2021-08-25 22:02:42
- * @LastEditTime: 2022-08-28 23:37:32
+ * @LastEditTime: 2022-08-29 19:53:52
  * @LastEditors: cully fung
  * @Description:
  */
@@ -13,11 +13,3 @@ export const handlePlaylist = songs => {
 		return createSong(item)
 	})
 }
-
-export const getStorage = k => window.localStorage.getItem(k)
-
-export const setStorage = (k, v) => window.localStorage.setItem(k, v)
-
-export const removeStorage = k => window.localStorage.removeItem(k)
-
-export const clearStorage = () => window.localStorage.clear()

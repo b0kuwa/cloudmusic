@@ -1,4 +1,4 @@
-import api from '../instance'
+import http from '@/utils/http'
 
 /**
  * 获取mv排行
@@ -7,7 +7,8 @@ import api from '../instance'
  * @param {*} offset 偏移数量 , 用于分页 , 如 :( 页数 -1)*30, 其中 30 为 limit 的值 , 默认 为 0
  * @returns
  */
-export const getMvTop = (limit = 30, area = '全部', offset = 0) => api.get('/mv/top', { params: { limit, area, offset } })
+export const getMvTop = (limit = 30, area = '全部', offset = 0) =>
+	http.get('/mv/top', { params: { limit, area, offset } })
 
 /**
  *  获取mv数据
@@ -15,7 +16,7 @@ export const getMvTop = (limit = 30, area = '全部', offset = 0) => api.get('/m
  * @param {*} mvid
  * @returns
  */
-export const getMvDetail = mvid => api.get('/mv/detail/', { params: { mvid } })
+export const getMvDetail = mvid => http.get('/mv/detail/', { params: { mvid } })
 
 /**
  *  获取 mv 点赞转发评论数数据
@@ -23,7 +24,8 @@ export const getMvDetail = mvid => api.get('/mv/detail/', { params: { mvid } })
  * @param {*} mvid
  * @returns
  */
-export const getMvDetailInfo = mvid => api.get('/mv/detail/info', { params: { mvid } })
+export const getMvDetailInfo = mvid =>
+	http.get('/mv/detail/info', { params: { mvid } })
 
 /**
  * 获取mv地址
@@ -32,19 +34,20 @@ export const getMvDetailInfo = mvid => api.get('/mv/detail/info', { params: { mv
  * @param {*} id mv id
  * @returns
  */
-export const getMvUrl = (id, r = '1080') => api.get('/mv/url', { params: { id, r } })
+export const getMvUrl = (id, r = '1080') =>
+	http.get('/mv/url', { params: { id, r } })
 
 /**
  * 获取视频标签列表
  * @returns
  */
-export const getVideoGroupList = () => api.get('/video/group/list')
+export const getVideoGroupList = () => http.get('/video/group/list')
 
 /**
  * 获取视频分类列表
  * @returns
  */
-export const getVideoCategoryList = () => api.get('/video/category/list')
+export const getVideoCategoryList = () => http.get('/video/category/list')
 
 /**
  * 获取视频标签/分类下的视频
@@ -52,7 +55,8 @@ export const getVideoCategoryList = () => api.get('/video/category/list')
  * @param {*} offset  默认0
  * @returns
  */
-export const getVideoGroup = (id, offset = 0) => api.get('/video/group', { params: { id, offset } })
+export const getVideoGroup = (id, offset = 0) =>
+	http.get('/video/group', { params: { id, offset } })
 
 /**
  * 获取全部视频列表
@@ -60,7 +64,8 @@ export const getVideoGroup = (id, offset = 0) => api.get('/video/group', { param
  * @param {*} offset 默认0
  * @returns
  */
-export const getVideoTimelineAll = (offset = 0) => api.get('/video/timeline/all', { params: { offset } })
+export const getVideoTimelineAll = (offset = 0) =>
+	http.get('/video/timeline/all', { params: { offset } })
 
 /**
  * 获取推荐视频
@@ -68,35 +73,39 @@ export const getVideoTimelineAll = (offset = 0) => api.get('/video/timeline/all'
  * @param {*} offset 默认0
  * @returns
  */
-export const getVideoTimelineRecommend = (offset = 0) => api.get('/video/timeline/recommend', { params: { offset } })
+export const getVideoTimelineRecommend = (offset = 0) =>
+	http.get('/video/timeline/recommend', { params: { offset } })
 
 /**
  * 相关视频
  * @param {*} id 视频id
  * @returns
  */
-export const getRelatedAllvideo = id => api.get('/related/allvideo', { params: { id } })
+export const getRelatedAllvideo = id =>
+	http.get('/related/allvideo', { params: { id } })
 
 /**
  * 视频详情
  * @param {*} id 视频id
  * @returns
  */
-export const getVideoDetail = id => api.get('/video/detail', { params: { id } })
+export const getVideoDetail = id =>
+	http.get('/video/detail', { params: { id } })
 
 /**
  * 获取视频点赞转发评论数数据
  * @param {*} vid 视频id
  * @returns
  */
-export const getVideoDetailInfo = vid => api.get('/video/detail/info', { params: { vid } })
+export const getVideoDetailInfo = vid =>
+	http.get('/video/detail/info', { params: { vid } })
 
 /**
  * 获取视频播放地址
  * @param {*} id 视频id
  * @returns
  */
-export const getVideoUrl = id => api.get('/video/url', { params: { id } })
+export const getVideoUrl = id => http.get('/video/url', { params: { id } })
 
 /**
  *  获取mv评论
@@ -106,4 +115,4 @@ export const getVideoUrl = id => api.get('/video/url', { params: { id } })
  * before: 分页参数,取上一页最后一项的 time 获取下一页数据(获取超过5000条评论的时候需要用到)
  * @returns
  */
-export const getCommentMv = params => api.get('/comment/mv/', { params })
+export const getCommentMv = params => http.get('/comment/mv/', { params })
