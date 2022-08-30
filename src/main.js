@@ -1,7 +1,7 @@
 /*
  * @Author: cully fung
  * @Date: 2021-06-14 11:38:16
- * @LastEditTime: 2022-08-30 08:54:31
+ * @LastEditTime: 2022-08-30 09:05:27
  * @LastEditors: cully fung
  * @Description:
  */
@@ -18,7 +18,6 @@ import '@/plugin/element-ui'
 
 import '@/filters'
 
-import '@/conf'
 import http from './utils/http'
 
 Vue.config.productionTip = false
