@@ -1,7 +1,7 @@
 /*
  * @Author: cully fung
  * @Date: 2021-06-14 11:38:16
- * @LastEditTime: 2022-08-29 20:01:52
+ * @LastEditTime: 2022-08-30 08:54:31
  * @LastEditors: cully fung
  * @Description:
  */
@@ -17,8 +17,6 @@ import '@/assets/fonts/iconfont.css'
 import '@/plugin/element-ui'
 
 import '@/filters'
-
-import '@/global-components'
 
 import '@/conf'
 import http from './utils/http'
