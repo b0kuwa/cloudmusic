@@ -5,4 +5,15 @@
  * @LastEditors: cully fung
  * @Description:
  */
-module.exports = {}
+module.exports = {
+	devServer: {
+		disableHostCheck: true,
+		// proxy: {
+		// 	'/': {
+		// 			target: process.env.VUE_APP_BASE_URL,
+		// 			ws: true,
+		// 			changeOrigin: true
+		// 	}
+		// }
+	}
+}

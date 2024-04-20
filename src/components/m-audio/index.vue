@@ -92,6 +92,7 @@
 import { mapGetters, mapState } from 'vuex'
 
 export default {
+	name: 'm-audio',
 	data() {
 		return {
 			// 音量

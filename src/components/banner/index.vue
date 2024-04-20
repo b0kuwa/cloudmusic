@@ -20,6 +20,7 @@
 
 <script>
 export default {
+	name: 'banner',
 	props: {
 		banners: {
 			type: Array,

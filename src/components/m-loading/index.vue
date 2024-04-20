@@ -14,6 +14,7 @@
 
 <script>
 export default {
+	name:'m-loading',
 	props: {
 		text: {
 			type: String,

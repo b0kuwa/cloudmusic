@@ -5,7 +5,8 @@
 	"scripts": {
 		"dev": "vue-cli-service serve",
 		"build": "vue-cli-service build",
-		"lint": "vue-cli-service lint"
+		"lint": "vue-cli-service lint",
+		"update": "npx taze -w"
 	},
 	"dependencies": {
 		"axios": "^0.21.1",
@@ -26,7 +27,6 @@
 		"babel-plugin-component": "^1.1.1",
 		"eslint": "^6.7.2",
 		"eslint-plugin-vue": "^6.2.2",
-		"node-sass": "4.13.1",
 		"postcss": "^7",
 		"sass": "^1.38.1",
 		"sass-loader": "^7.3.1",

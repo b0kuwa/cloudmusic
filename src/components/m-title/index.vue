@@ -7,6 +7,7 @@
 -->
 <script>
 export default {
+	name: 'm-title',
 	props: {
 		level: {
 			type: Number,

@@ -35,6 +35,7 @@
 <script>
 import Search from '@/components/search'
 export default {
+	name: 'nav-header',
 	components: {
 		Search
 	},
